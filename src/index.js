@@ -3,11 +3,12 @@ import Calc from "./calc"
 import img from "./react-icon.png";
 import React from "react";
 import ReactDOM from "react-dom";
-import "./main.scss";
+import  "./main.scss";
+import mainModule from "./main.module.scss";
 
 const App =  () => {
-  console.log("yabadabadooo!!");
-  return <div>Hello</div>;
+
+  return <div className={""}>Hello1 <span className={mainModule.red}> sdlfkjnsldnflnj</span></div>;
 }
 
 ReactDOM.render(<App />, document.getElementById("root"));
