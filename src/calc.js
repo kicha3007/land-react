@@ -1,7 +1,5 @@
 export default class Cals {
-  add(...args) {
-    return args.reduce((a, b) => a + b , 0);
+  static add(...args) {
+    return args.Array.prototype.reduce((a, b) => a + b, 0);
   }
-
-
 }
