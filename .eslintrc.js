@@ -18,5 +18,7 @@ module.exports = {
     'react',
   ],
   rules: {
+    'import/prefer-default-export': 'off',
+    'react/require-default-props': 'off',
   },
 };

@@ -1,0 +1,31 @@
+.header {
+  background: black;
+  min-height: 100px;
+
+}
+
+.wrap {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 20px;
+  align-items: center;
+}
+
+.column {
+
+}
+
+.column {
+  &_pos_1 {
+
+  }
+  &_pos_2 {
+    display: flex;
+
+  }
+}
+
+.container {
+
+}
+

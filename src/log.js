@@ -1,5 +1,5 @@
 export default class Log {
-  log(msg) {
+  static log(msg) {
     console.log('================');
     console.log(msg);
     console.log('================');

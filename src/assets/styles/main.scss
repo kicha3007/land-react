@@ -1,0 +1,106 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  font-family: 'Suisseintl', sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+html {
+  max-width: 100vw;
+  overflow-x: hidden;
+  min-height: 100%;
+}
+
+body {
+  //overflow: hidden;
+  //overflow-x: hidden;
+  position: relative;
+  line-height: 1.42;
+  //прибивка футера к низу
+  display: flex;
+  flex-direction: column;
+}
+
+.main-wrapper {
+  flex: 1 0 auto;
+  background-color: #262f39;
+  overflow-x: hidden;
+}
+
+.footer {
+  flex: 0 0 auto;
+  overflow: hidden;
+  max-width: 100vw;
+}
+
+.main-container {
+  width: 100%;
+  max-width: 1010px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  &_width_hd {
+    max-width: 1530px;
+  }
+
+  &_width_desc {
+    max-width: 1010px;
+  }
+
+  @include desktop {
+    max-width: 1010px;
+  }
+  @include tablets {
+    max-width: 768px;
+  }
+}
+
+html.overflow-hidden {
+  overflow: hidden;
+}
+
+html.overflow-hidden body {
+  overflow: hidden;
+}
+
+
+.overlay {
+  display: none;
+}
+
+.overlay.active {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000000;
+  opacity: 0.45;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 55;
+}
+
+.hide {
+  display: none;
+}
+
+.opacity {
+  opacity: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

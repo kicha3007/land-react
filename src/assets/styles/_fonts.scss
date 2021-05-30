@@ -1,0 +1,16 @@
+// https://developer.mozilla.org/ru/docs/Web/CSS/font-weight
+// 100	Тонкий (Волосяной) Thin (Hairline)
+// 200	Дополнительный светлый (Сверхсветлый) Extra Light (Ultra Light)
+// 300	Светлый Light
+// 400	Нормальный Normal
+// 500	Средний Medium
+// 600	Полужирный Semi Bold (Demi Bold)
+// 700	Жирный Bold
+// 800	Дополнительный жирный (Сверхжирный) Extra Bold (Ultra Bold)
+// 900	Черный (Густой) Black (Heavy)
+
+
+@include font-face("Suisseintl", "../fonts/SuisseIntl-Regular", "400", eot woff2 woff ttf svg );
+@include font-face("Suisseintl", "../fonts/SuisseIntl-Medium", "500", eot woff2 woff ttf svg );
+@include font-face("Suisseintl", "../fonts/SuisseIntl-SemiBold", "700", eot woff2 woff ttf svg );
+
