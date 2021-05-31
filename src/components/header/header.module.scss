@@ -1,7 +1,6 @@
 .header {
   background: black;
   min-height: 100px;
-
 }
 
 .wrap {
@@ -13,19 +12,8 @@
 
 .column {
 
-}
-
-.column {
-  &_pos_1 {
-
-  }
   &_pos_2 {
     display: flex;
 
   }
 }
-
-.container {
-
-}
-
