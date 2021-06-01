@@ -39,25 +39,10 @@ body {
 
 .main-container {
   width: 100%;
-  max-width: 1010px;
+  max-width: 1230px;
   margin: 0 auto;
   padding: 0 15px;
 
-  &_width_hd {
-    max-width: 1530px;
-  }
-
-  &_width_desc {
-    max-width: 1010px;
-  }
-
-  @include desktop {
-    max-width: 1010px;
-  }
-
-  @include tablets {
-    max-width: 768px;
-  }
 }
 
 html.overflow-hidden {

@@ -1,0 +1,26 @@
+.main-screen {
+  padding-top: 197px;
+  padding-bottom: 190px;
+  background: url('/public/static/images/bg.jpg') no-repeat top;
+  background-size: cover;
+}
+
+.wrap {
+  max-width: 650px;
+}
+
+.title {
+  font-style: normal;
+  font-weight: bold;
+  font-size: 124px;
+  line-height: 124px;
+  color: #F8F8F8;
+}
+
+.text {
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 36px;
+  color: #FFFFFF;
+  margin-bottom: 64px;
+}
