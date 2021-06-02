@@ -1,0 +1,19 @@
+.button {
+  padding: 20px 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: .2s;
+  cursor: pointer;
+  background: #ffffff;
+  border-radius: 8px;
+  color: #18202a;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  border: none;
+  font-weight: bold;
+
+  &:disabled {
+    cursor: not-allowed;
+  }
+}

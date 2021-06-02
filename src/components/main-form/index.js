@@ -1,0 +1,1 @@
+export { MainFrom } from './main-form';

@@ -32,6 +32,7 @@
     "sass-loader": "^11.1.1",
     "sass-resources-loader": "^2.2.1",
     "style-loader": "^2.0.0",
+    "stylelint": "^13.13.1",
     "stylelint-config-prettier": "^8.0.2",
     "stylelint-config-recommended": "^5.0.0",
     "stylelint-order": "^4.1.0",
@@ -58,7 +59,7 @@
     "linters": {
       "*.css": [
         "prettier --write",
-        "stylelint --fix --config ./.stylelintrc-format",
+        "stylelint --fix --config ./.stylelintrc",
         "git add"
       ]
     }
