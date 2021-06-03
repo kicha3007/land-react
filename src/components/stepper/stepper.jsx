@@ -15,7 +15,9 @@ const Stepper = ({ stepsCount, activeStep }) => {
     const isActiveDot = index === activeStep ? s.active : null;
 
     return (
-      <div className={cn(s.dot, isActiveDot)} />
+      <div className={cn(s.dot, isActiveDot)} key={index}>
+        {index + 1}
+      </div>
     );
   });
 

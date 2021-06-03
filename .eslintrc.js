@@ -21,5 +21,7 @@ module.exports = {
     'import/prefer-default-export': 'off',
     'react/require-default-props': 'off',
     'react/button-has-type': 'off',
+    'linebreak-style': ['error', 'windows'],
+    'eol-last': 'off',
   },
 };

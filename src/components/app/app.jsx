@@ -1,7 +1,9 @@
 import React, { Fragment } from 'react';
+import s from './app.module.scss';
+
 import { Header } from '../header';
 import { MainScreen } from '../main-screen';
-import s from './app.module.scss';
+import { MainForm } from '../main-form';
 
 const App = () => (
   <>
@@ -13,6 +15,7 @@ const App = () => (
       text="Дебетовая карта с неограниченным кэшбеком и ежедневным процентом на остаток"
       buttonText="Оформить онлайн"
     />
+    <MainForm />
   </>
 );
 

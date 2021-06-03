@@ -1,1 +1,1 @@
-export { MainFrom } from './main-form.jsx';
+export { MainForm } from './main-form.jsx';
