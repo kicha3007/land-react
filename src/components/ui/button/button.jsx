@@ -3,9 +3,15 @@ import PropTypes from 'prop-types';
 import cn from 'classnames';
 import s from './button.module.scss';
 
-const Button = ({ text, linkHref = null, buttonType = 'button' }) => {
+const Button = ({ text, linkHref = null, type = 'button' }) => {
+  Button.propTypes = {
+    text: PropTypes.string,
+    linkHref: PropTypes.string,
+    type: PropTypes.string,
+  };
+
   const renderButton = () => (
-    <button type={buttonType} className={s.button}>{ text }</button>
+    <button type={type} className={s.button}>{ text }</button>
   );
 
   const renderLink = () => (
@@ -17,10 +23,6 @@ const Button = ({ text, linkHref = null, buttonType = 'button' }) => {
   );
 };
 
-Button.propTypes = {
-  text: PropTypes.string,
-  linkHref: PropTypes.string,
-  buttonType: PropTypes.string,
-};
+
 
 export { Button };

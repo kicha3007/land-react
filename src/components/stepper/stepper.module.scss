@@ -1,0 +1,40 @@
+.stepper {
+  display: flex;
+  align-items: center;
+
+}
+
+.text {
+  letter-spacing: 0.01em;
+  color: #9dadbf;
+  margin-right: 32px;
+}
+
+.dots-wrap {
+  display: flex;
+
+}
+
+.dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #f9e677;
+  opacity: 0.4;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-right: 16px;
+
+  }
+
+  &.active {
+    background: #ffe043;
+    opacity: 1;
+
+    ~ .dot {
+      background: #ffffff;
+      opacity: 0.3;
+    }
+  }
+}

@@ -1,7 +1,13 @@
 import React from 'react';
 
+import { CheckboxField } from '../../form-fields/checkbox-field';
+
 const InfoStep = () => (
-  <div>Шаг 1</div>
+  <div>
+
+    <CheckboxField text="ранее не менялись" />
+
+  </div>
 );
 
 export { InfoStep };

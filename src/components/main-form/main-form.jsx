@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
-import { formik, form } from 'formik';
+import { Formik, form } from 'formik';
 import s from './main-form.module.scss';
 
 import { Stepper } from '../stepper';
 import { Tags } from '../ui/tags';
+import { Button } from '../ui/button';
 import {
   DocumentsStep, EmployerStep, HomeStep, InfoStep, SmsStep,
 } from './steps-form';
@@ -72,31 +73,71 @@ const MainForm = () => {
   const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
 
+
+
+  const submitForm = (values, actions) => {
+    // alert(JSON.stringify(values, null , 2));
+    // actions.setSubmiting(false);
+
+    //setActiveStep(activeStep + 1);
+  };
+
   const handleBack = () => {
     setActiveStep(activeStep - 1);
   };
 
+  const handleSubmit = (values, actions) => {
+    if (isLastStep) {
+      submitForm(values, actions);
+    } else {
+      setActiveStep(activeStep + 1);
+    }
+  };
+
   return (
-    <form className={s['main-from']}>
-      <div className={cn('main-container')}>
-        <div className="wrap">
-          <div className={s.header}>
-            <Stepper activeStep={activeStep} stepsCount={steps.length} />
-          </div>
-          <div className={s.body}>
-            <div className={cn(s.column, s.column_pos_1)}>
-              {renderStepContent(activeStep)}
-            </div>
-            <div className={cn(s.column, s.column_pos_2)}>
-              <div className={s['image-box']}>
-                <img src="/static/images/card.png" alt="" />
+    <Formik onSubmit={handleSubmit}>
+      <form className={s['main-form']}>
+        <div className={cn('main-container')}>
+          <div className={s.wrap}>
+            <div className={s.header}>
+              <div className={cn(s['header-column'], s['header-column_pos_1'])}>
+                {steps[activeStep].text}
               </div>
-              <Tags tagsList={tags} />
+              <div className={cn(s['header-column'], s['header-column_pos_2'])}>
+                <Stepper activeStep={activeStep} stepsArr={steps} />
+              </div>
+            </div>
+            <div className={s.body}>
+              <div className={s['inner-wrap']}>
+                <div className={cn(s.column, s.column_pos_1)}>
+                  {renderStepContent(activeStep)}
+                </div>
+                <div className={cn(s.column, s.column_pos_2)}>
+                  <div className={s['image-box']}>
+                    <img src="/static/images/card.png" alt="" />
+                  </div>
+                  <Tags tagsList={tags} />
+                </div>
+              </div>
+              <div className={s.buttons}>
+                <div className={s['buttons-wrap']}>
+                  <div className={cn(s['buttons-column'], s['buttons-column_pos_1'])}>
+                    <div className={s['buttons-wrap']}>
+                      <Button text="далее" disabled type="submit" />
+                    </div>
+                  </div>
+                  <div className={cn(s['buttons-column'], s['buttons-column_pos_2'])}>
+                    <div className={s.note}>
+                      * – поля обязательные для заполнения
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </form>
+      </form>
+    </Formik>
   );
 };
 
