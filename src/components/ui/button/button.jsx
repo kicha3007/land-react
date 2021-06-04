@@ -23,6 +23,4 @@ const Button = ({ text, linkHref = null, type = 'button' }) => {
   );
 };
 
-
-
 export { Button };
