@@ -15,7 +15,7 @@ module.exports = (env, options = {}) => {
         sourceMap: true,
         importLoaders: 2,
         modules: isModules ? {
-          localIdentName: '[local]__[sha1:hash:hex:7]',
+          localIdentName: '[name]__[local]---[sha1:hash:hex:7]',
         } : false,
       },
     },

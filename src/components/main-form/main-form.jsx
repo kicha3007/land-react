@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import cn from 'classnames';
-import { Formik, form } from 'formik';
+import { Formik, Form } from 'formik';
 import s from './main-form.module.scss';
 
 import { Stepper } from '../stepper';
@@ -9,6 +9,10 @@ import { Button } from '../ui/button';
 import {
   DocumentsStep, EmployerStep, HomeStep, InfoStep, SmsStep,
 } from './steps-form';
+
+import { formFieldsModel } from './form-model/form-fields-model';
+
+const { formId, formFields } = formFieldsModel;
 
 const steps = [
   {
@@ -55,15 +59,15 @@ const tags = [
 const renderStepContent = (step) => {
   switch (step) {
     case 0:
-      return <InfoStep />;
+      return <InfoStep formFields={formFields} />;
     case 1:
-      return <SmsStep />;
+      return <SmsStep formFields={formFields} />;
     case 2:
-      return <DocumentsStep />;
+      return <DocumentsStep formFields={formFields} />;
     case 3:
-      return <HomeStep />;
+      return <HomeStep formFields={formFields} />;
     case 4:
-      return <EmployerStep />;
+      return <EmployerStep formFields={formFields} />;
     default:
       return <div>Not Found</div>;
   }
@@ -73,13 +77,11 @@ const MainForm = () => {
   const [activeStep, setActiveStep] = useState(0);
   const isLastStep = activeStep === steps.length - 1;
 
-
-
   const submitForm = (values, actions) => {
     // alert(JSON.stringify(values, null , 2));
     // actions.setSubmiting(false);
 
-    //setActiveStep(activeStep + 1);
+    // setActiveStep(activeStep + 1);
   };
 
   const handleBack = () => {
@@ -96,7 +98,7 @@ const MainForm = () => {
 
   return (
     <Formik onSubmit={handleSubmit}>
-      <form className={s['main-form']}>
+      <form className={s['main-form']} id={formId}>
         <div className={cn('main-container')}>
           <div className={s.wrap}>
             <div className={s.header}>
