@@ -11,6 +11,7 @@ import {
 } from './steps-form';
 
 import { formFieldsModel } from './form-model/form-fields-model';
+import { formInitialValues } from './form-model/form-initial-values';
 
 const { formId, formFields } = formFieldsModel;
 
@@ -97,48 +98,53 @@ const MainForm = () => {
   };
 
   return (
-    <Formik onSubmit={handleSubmit}>
-      <form className={s['main-form']} id={formId}>
-        <div className={cn('main-container')}>
-          <div className={s.wrap}>
-            <div className={s.header}>
-              <div className={cn(s['header-column'], s['header-column_pos_1'])}>
-                {steps[activeStep].text}
-              </div>
-              <div className={cn(s['header-column'], s['header-column_pos_2'])}>
-                <Stepper activeStep={activeStep} stepsArr={steps} />
-              </div>
-            </div>
-            <div className={s.body}>
-              <div className={s['inner-wrap']}>
-                <div className={cn(s.column, s.column_pos_1)}>
-                  {renderStepContent(activeStep)}
+    <Formik
+      onSubmit={handleSubmit}
+      initialValues={formInitialValues}
+    >
+      {({ isSubmitting }) => (
+        <Form className={s['main-form']} id={formId}>
+          <div className={cn('main-container')}>
+            <div className={s.wrap}>
+              <div className={s.header}>
+                <div className={cn(s['header-column'], s['header-column_pos_1'])}>
+                  {steps[activeStep].text}
                 </div>
-                <div className={cn(s.column, s.column_pos_2)}>
-                  <div className={s['image-box']}>
-                    <img src="/static/images/card.png" alt="" />
+                <div className={cn(s['header-column'], s['header-column_pos_2'])}>
+                  <Stepper activeStep={activeStep} stepsArr={steps} />
+                </div>
+              </div>
+              <div className={s.body}>
+                <div className={s['inner-wrap']}>
+                  <div className={cn(s.column, s.column_pos_1)}>
+                    {renderStepContent(activeStep)}
                   </div>
-                  <Tags tagsList={tags} />
-                </div>
-              </div>
-              <div className={s.buttons}>
-                <div className={s['buttons-wrap']}>
-                  <div className={cn(s['buttons-column'], s['buttons-column_pos_1'])}>
-                    <div className={s['buttons-wrap']}>
-                      <Button text="далее" disabled type="submit" />
+                  <div className={cn(s.column, s.column_pos_2)}>
+                    <div className={s['image-box']}>
+                      <img src="/static/images/card.png" alt="" />
                     </div>
+                    <Tags tagsList={tags} />
                   </div>
-                  <div className={cn(s['buttons-column'], s['buttons-column_pos_2'])}>
-                    <div className={s.note}>
-                      * – поля обязательные для заполнения
+                </div>
+                <div className={s.buttons}>
+                  <div className={s['buttons-wrap']}>
+                    <div className={cn(s['buttons-column'], s['buttons-column_pos_1'])}>
+                      <div className={s['buttons-wrap']}>
+                        <Button text="далее" disabled type="submit" />
+                      </div>
+                    </div>
+                    <div className={cn(s['buttons-column'], s['buttons-column_pos_2'])}>
+                      <div className={s.note}>
+                        * – поля обязательные для заполнения
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </form>
+        </Form>
+      )}
     </Formik>
   );
 };

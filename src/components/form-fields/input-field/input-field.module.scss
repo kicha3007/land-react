@@ -1,0 +1,26 @@
+.input-field {
+
+}
+
+.placeholder {
+
+}
+
+.input {
+  padding: 20px 24px;
+  font-size: 20px;
+  line-height: 30px;
+  letter-spacing: 0.01em;
+  color: #18202A;
+  width: 100%;
+  transition: 0.2s;
+  height: 64px;
+  border: 1px solid rgba(11, 31, 53, 0.15);
+  box-sizing: border-box;
+  border-radius: 8px;
+
+  &::placeholder {
+    color: transparent;
+  }
+
+}

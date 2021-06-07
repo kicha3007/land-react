@@ -5,7 +5,7 @@ import s from './tags.module.scss';
 
 const Tags = ({ tagsList }) => {
   Tags.propTypes = {
-    tagsList: PropTypes.arrayOf(PropTypes.string),
+    tagsList: PropTypes.arrayOf(PropTypes.object),
   };
 
   const list = tagsList.map((tag) => (

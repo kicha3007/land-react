@@ -1,17 +1,20 @@
 .checkbox {
-  cursor: pointer;
   display: inline-block;
 }
 
 .input {
   position: absolute;
-  z-index: -1;
-  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 
   + .wrap {
     display: inline-flex;
     align-items: center;
-    cursor: pointer;
 
     &:before {
       content: '';
@@ -72,5 +75,10 @@
   letter-spacing: 0.01em;
   color: #18202A;
   margin-left: 16px;
+}
+
+.label {
+  cursor: pointer;
+  display: block;
 }
 

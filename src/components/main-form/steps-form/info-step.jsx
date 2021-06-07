@@ -34,6 +34,7 @@ const cashBackList = [
 
 const InfoStep = (props) => {
   InfoStep.propTypes = {
+    formFields: PropTypes.objectOf(PropTypes.object),
     cashBack: PropTypes.objectOf(PropTypes.string),
     fullName: PropTypes.objectOf(PropTypes.string),
     fullNameDontChanged: PropTypes.objectOf(PropTypes.string),
@@ -56,8 +57,8 @@ const InfoStep = (props) => {
   return (
     <div>
       <>
-        <CheckboxField text={fullNameDontChanged.label} name={fullNameDontChanged.name} />
-        <InputField text="Фамилия Имя Отчество*" name="initials" />
+        <CheckboxField label={fullNameDontChanged.label} name={fullNameDontChanged.name} />
+        <InputField label={fullName.label} name={fullName.name} />
       </>
     </div>
   );
