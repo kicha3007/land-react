@@ -12,6 +12,7 @@ import {
 
 import { formFieldsModel } from './form-model/form-fields-model';
 import { formInitialValues } from './form-model/form-initial-values';
+import { validationSchema } from './form-model/validation-sheme';
 
 const { formId, formFields } = formFieldsModel;
 
@@ -76,6 +77,7 @@ const renderStepContent = (step) => {
 
 const MainForm = () => {
   const [activeStep, setActiveStep] = useState(0);
+  const currentValidationSchema = validationSchema[activeStep];
   const isLastStep = activeStep === steps.length - 1;
 
   const submitForm = (values, actions) => {
@@ -101,6 +103,7 @@ const MainForm = () => {
     <Formik
       onSubmit={handleSubmit}
       initialValues={formInitialValues}
+      validationSchema={currentValidationSchema}
     >
       {({ isSubmitting }) => (
         <Form className={s['main-form']} id={formId}>

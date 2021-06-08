@@ -3,32 +3,32 @@ import PropTypes from 'prop-types';
 
 import { CheckboxField } from '../../form-fields/checkbox-field';
 import { InputField } from '../../form-fields/input-field';
+import { SelectField } from '../../form-fields/select-field';
 
 const cashBackList = [
   {
     value: undefined,
     label: 'Выберите опцию кэшбэка',
-    icon: '',
   },
   {
     value: '0',
     label: 'Кэшбек на всё',
-    icon: '',
+    icon: 'bag.svg',
   },
   {
     value: '1',
     label: 'Умный кэшбек',
-    icon: '',
+    icon: 'coffee.svg',
   },
   {
     value: '2',
     label: 'Авто',
-    icon: '',
+    icon: 'car.svg',
   },
   {
     value: '3',
     label: 'Баллы партнёра',
-    icon: '',
+    icon: 'magazine.svg',
   },
 ];
 
@@ -59,6 +59,7 @@ const InfoStep = (props) => {
       <>
         <CheckboxField label={fullNameDontChanged.label} name={fullNameDontChanged.name} />
         <InputField label={fullName.label} name={fullName.name} />
+        <SelectField dataList={cashBackList} />
       </>
     </div>
   );

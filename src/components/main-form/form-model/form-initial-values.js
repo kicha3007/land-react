@@ -22,7 +22,7 @@ const {
 
 const formInitialValues = {
   [cashBack.name]: '',
-  [fullName.name]: 'dfdfdf',
+  [fullName.name]: '',
   [fullNameDontChanged.name]: true,
   [phone.name]: '',
   [smsCode.name]: '',

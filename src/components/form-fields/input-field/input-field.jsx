@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useField } from 'formik';
+import cn from 'classnames';
 import s from './input-field.module.scss';
 
 const InputField = ({ label, ...props }) => {
@@ -10,15 +11,28 @@ const InputField = ({ label, ...props }) => {
   };
 
   const [field, meta, helper] = useField(props);
+  const { touched, error } = meta;
   const { setValue } = helper;
+  const isError = touched && error && true;
 
   const onChangeHandler = (evt) => {
-    console.log('evt', evt);
     setValue(evt.target.value);
   };
 
+  const renderHelperText = () => {
+    if (touched && error) {
+      return error;
+    }
+    return null;
+  };
+
+  const styles = {
+    [s['input-field']]: true,
+    error: isError,
+  };
+
   return (
-    <div className={s['input-field']}>
+    <div className={cn(styles)}>
       <div className={s.placeholder}>
         { label }
       </div>
@@ -27,7 +41,11 @@ const InputField = ({ label, ...props }) => {
         value={field.value}
         name={field.name}
         onChange={onChangeHandler}
+        onBlur={field.onBlur}
       />
+      <div className={s['error-text']}>
+        { renderHelperText() }
+      </div>
 
     </div>
   );

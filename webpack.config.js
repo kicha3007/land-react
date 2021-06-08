@@ -15,7 +15,7 @@ module.exports = (env, options = {}) => {
         sourceMap: true,
         importLoaders: 2,
         modules: isModules ? {
-          localIdentName: '[name]__[local]---[sha1:hash:hex:7]',
+          localIdentName: '[name]__[local]--[sha1:hash:hex:7]',
         } : false,
       },
     },
@@ -66,7 +66,7 @@ module.exports = (env, options = {}) => {
       rules: [
 
         {
-          test: /\.(js|jsx)$/,
+          test: /\.(js)x?$/,
           exclude: /node_modules/,
           loader: 'babel-loader',
         },

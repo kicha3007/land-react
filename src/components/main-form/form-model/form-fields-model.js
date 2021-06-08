@@ -9,12 +9,13 @@ const formFieldsModel = {
     fullName: {
       name: 'fullName',
       label: 'Фамилия Имя Отчество*',
-      requiredErrorMsg: '',
+      requiredErrorMsg: 'Не правильно введено имя',
       invalidErrorMsg: '',
     },
     fullNameDontChanged: {
       name: 'fullNameDontChanged',
       label: 'ранее не менялись',
+      requiredErrorMsg: 'Обязательно тест',
     },
     phone: {
       name: 'phone',
