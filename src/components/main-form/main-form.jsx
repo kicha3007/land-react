@@ -58,10 +58,17 @@ const tags = [
   },
 ];
 
+const formClasses = {
+  row: s.row,
+  column: s['inner-column'],
+  column_pos_1: s['inner-column_pos_1'],
+  column_pos_2: s['inner-column_pos_2'],
+};
+
 const renderStepContent = (step) => {
   switch (step) {
     case 0:
-      return <InfoStep formFields={formFields} />;
+      return <InfoStep formFields={formFields} formClasses={formClasses} />;
     case 1:
       return <SmsStep formFields={formFields} />;
     case 2:

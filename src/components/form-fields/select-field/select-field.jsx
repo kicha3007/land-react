@@ -23,55 +23,103 @@ const SelectField = ({ label, dataList, ...props }) => {
   };
 
   const styles = {
-    [s['select-field']]: true,
-    error: isError,
+    selectField: {
+      [s['select-field']]: true,
+      error: isError,
+    },
   };
 
   const { Option, ValueContainer } = components;
 
-  const IconOption = (propsOption) => {
-    const { data: { label: labelOption, icon } } = propsOption;
+  const optionTemplate = (propsOption) => {
+    const { data: { label: labelOption, icon }, ...propsOptionRest } = propsOption;
     return (
-      <Option {...propsOption}>
-        {!!icon && (
-          <img
-            src={`/static/images/${icon}`}
-            style={{ width: 36 }}
-            alt={labelOption}
-          />
-        )}
-        { labelOption }
-      </Option>
+      !!Option && (
+        <Option {...propsOptionRest}>
+            {!!icon && (
+              <img
+                className={s['default-option-icon']}
+                src={`/static/images/${icon}`}
+                alt={labelOption}
+              />
+            )}
+            { labelOption }
+        </Option>
+      )
     );
   };
 
-  const inputContainer = ({ children, ...props }) => {
-    const { propsContainer } =
+  const defaultOptionTemplate = (propsDefaultOption) => {
+    const { children, ...propsOptionRest } = propsDefaultOption;
+    const { label: labelOption, value, icon } = children[0].props.data;
+    const isDefaultValue = !value;
+    const style = {
+      [s['default-value']]: isDefaultValue,
+    };
 
-    console.log("children",children );
     return (
-      components.ValueContainer && (
-        <ValueContainer {...propsContainer}>
-          {!!children && (
-            <i
-              className="fa fa-search"
-              aria-hidden="true"
-              style={{ position: 'absolute', left: 6 }}
+      !!ValueContainer && (
+        <ValueContainer {...propsOptionRest} className={cn(style)}>
+          {!!icon && (
+            <img
+              src={`/static/images/${icon}`}
+              className={s['option-icon']}
+              alt={labelOption}
             />
           )}
-          {children}
+          { children }
         </ValueContainer>
       )
     );
   };
 
+  const customStyles = {
+    valueContainer: () => ({
+      padding: '18px 16px 16px',
+      display: 'flex',
+      flexGrow: '1',
+    }),
+    singleValue: () => ({
+      position: 'static',
+    }),
+    SingleValue: () => ({
+      fontSize: '20px',
+      lineHeight: '30px',
+      letterSpacing: '0.01em',
+      color: '#18202A',
+    }),
+    menu: () => ({
+      padding: '0 8px',
+      position: 'absolute',
+      top: 'calc(100% + 2px)',
+      zIndex: '10',
+      background: '#fff',
+      width: '100%',
+      border: '1px solid #CED7E0',
+      borderRadius: '8px',
+    }),
+    option: () => ({
+      padding: '12px 15px',
+      display: 'flex',
+      alignItems: 'center',
+      cursor: 'pointer',
+    }),
+    control: () => ({
+      borderColor: 'transparent',
+      display: 'flex',
+      cursor: 'pointer',
+      background: '#fff',
+    }),
+  };
+
   return (
-    <div className={cn(styles)}>
+    <div className={cn(styles.selectField)}>
       <Select
         className={s.select}
-        components={{ Option: IconOption, ValueContainer: inputContainer }}
+        components={{ Option: optionTemplate, ValueContainer: defaultOptionTemplate }}
         options={dataList}
         defaultValue={dataList[0]}
+        styles={customStyles}
       />
     </div>
 

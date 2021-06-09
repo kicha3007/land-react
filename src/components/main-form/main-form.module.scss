@@ -92,6 +92,25 @@
   }
 }
 
+.row {
+  display: flex;
+  margin: 0 -16px;
+}
+
+.inner-column {
+  margin: 0 16px;
+  width: 100%;
+
+  &_pos_1 {
+
+  }
+
+  &_pos_2 {
+
+
+  }
+}
+
 
 
 
