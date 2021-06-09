@@ -29,27 +29,35 @@ const SelectField = ({ label, dataList, ...props }) => {
     },
   };
 
-  const { Option, ValueContainer } = components;
+  const { Option, ValueContainer, DropdownIndicator  } = components;
 
   const optionTemplate = (propsOption) => {
-    const { data: { label: labelOption, icon }, ...propsOptionRest } = propsOption;
+    const {
+      data: { label: labelOption, icon, value },
+      isSelected, ...propsOptionRest
+    } = propsOption;
+
     return (
       !!Option && (
-        <Option {...propsOptionRest}>
-            {!!icon && (
-              <img
-                className={s['default-option-icon']}
-                src={`/static/images/${icon}`}
-                alt={labelOption}
-              />
-            )}
-            { labelOption }
+        <Option
+          className={cn({ [s.selected]: isSelected && value })}
+          {...propsOptionRest}
+        >
+          {!!icon && (
+            <img
+              className={s['default-option-icon']}
+              src={`/static/images/${icon}`}
+              alt={labelOption}
+            />
+          )}
+          { labelOption }
         </Option>
       )
     );
   };
 
   const defaultOptionTemplate = (propsDefaultOption) => {
+    console.log("propsDefaultOption", propsDefaultOption);
     const { children, ...propsOptionRest } = propsDefaultOption;
     const { label: labelOption, value, icon } = children[0].props.data;
     const isDefaultValue = !value;
@@ -73,6 +81,15 @@ const SelectField = ({ label, dataList, ...props }) => {
     );
   };
 
+  const dropdownIndicatorTemplate = (propsDropdownIndicator) => {
+    console.log("propsDropdownIndicator", propsDropdownIndicator);
+    return (
+      <DropdownIndicator {...propsDropdownIndicator}>
+        <img src="/static/images/arrow-dropdown.svg" alt="" />
+      </DropdownIndicator>
+    );
+  }
+
   const customStyles = {
     valueContainer: () => ({
       padding: '18px 16px 16px',
@@ -89,9 +106,9 @@ const SelectField = ({ label, dataList, ...props }) => {
       color: '#18202A',
     }),
     menu: () => ({
-      padding: '0 8px',
+      padding: '4px 0',
       position: 'absolute',
-      top: 'calc(100% + 2px)',
+      top: 'calc(100% + 6px)',
       zIndex: '10',
       background: '#fff',
       width: '100%',
@@ -103,12 +120,15 @@ const SelectField = ({ label, dataList, ...props }) => {
       display: 'flex',
       alignItems: 'center',
       cursor: 'pointer',
+      position: 'relative',
     }),
     control: () => ({
       borderColor: 'transparent',
       display: 'flex',
       cursor: 'pointer',
       background: '#fff',
+      borderRadius: '8px',
+      overflow: 'hidden',
     }),
   };
 
@@ -116,7 +136,11 @@ const SelectField = ({ label, dataList, ...props }) => {
     <div className={cn(styles.selectField)}>
       <Select
         className={s.select}
-        components={{ Option: optionTemplate, ValueContainer: defaultOptionTemplate }}
+        components={{
+          Option: optionTemplate,
+          ValueContainer: defaultOptionTemplate,
+          DropdownIndicator: dropdownIndicatorTemplate,
+        }}
         options={dataList}
         defaultValue={dataList[0]}
         styles={customStyles}

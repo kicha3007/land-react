@@ -28,3 +28,19 @@
 
   color: #9DADBF;
 }
+
+.selected {
+  background: #F8F8F8;
+
+  &::before {
+    position: absolute;
+    top: 50%;
+    right: 11px;
+    content: '';
+    display: block;
+    width: 24px;
+    height: 24px;
+    transform: translateY(-50%);
+    background: url("/public/static/images/check.svg") no-repeat center;
+  }
+}
