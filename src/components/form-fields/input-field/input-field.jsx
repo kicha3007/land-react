@@ -4,22 +4,29 @@ import { useField } from 'formik';
 import cn from 'classnames';
 import s from './input-field.module.scss';
 
-const InputField = ({ label, ...props }) => {
+const InputField = ({ label, getPrompt = null, ...props }) => {
   InputField.propTypes = {
     name: PropTypes.string,
     label: PropTypes.string,
+    getPrompt: PropTypes.func,
   };
 
   const [hasValue, setHasValue] = useState(false);
 
   const [field, meta, helper] = useField(props);
-  const { touched, error, value: currentValue  } = meta;
+  const { touched, error, value: currentValue } = meta;
   const { setValue } = helper;
 
   const isError = touched && error && true;
 
   const onChangeHandler = (evt) => {
     setValue(evt.target.value);
+
+    if (getPrompt) {
+      getPrompt(currentValue).then((data) => {
+        console.log("data", JSON.parse(data));
+      });
+    }
   };
 
   const renderHelperText = () => {
@@ -55,6 +62,7 @@ const InputField = ({ label, ...props }) => {
         onChange={onChangeHandler}
         onBlur={onBlurHandle}
       />
+
       <div className={s.placeholder}>
         { label }
       </div>

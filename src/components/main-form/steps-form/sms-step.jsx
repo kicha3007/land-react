@@ -1,7 +1,7 @@
 import React from 'react';
 
 const SmsStep = () => (
-  <div>Шаг 3</div>
+  <div>Шаг 2</div>
 );
 
 export { SmsStep };

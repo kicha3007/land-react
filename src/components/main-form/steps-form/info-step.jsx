@@ -5,10 +5,11 @@ import cn from 'classnames';
 import { CheckboxField } from '../../form-fields/checkbox-field';
 import { InputField } from '../../form-fields/input-field';
 import { SelectField } from '../../form-fields/select-field';
+import { dadataService } from '../../../services/dadata-service';
 
 const cashBackList = [
   {
-    value: null,
+    value: undefined,
     label: 'Выберите опцию кэшбэка',
   },
   {
@@ -67,7 +68,11 @@ const InfoStep = (props) => {
         </div>
         <div className={formClasses.row}>
           <div className={cn(formClasses.column, formClasses.column_pos_1)}>
-            <InputField label={fullName.label} name={fullName.name} />
+            <InputField
+              label={fullName.label}
+              name={fullName.name}
+              getPrompt={(query) => dadataService('address', query)}
+            />
           </div>
           <div className={cn(formClasses.column, formClasses.column_pos_2)}>
             <CheckboxField label={fullNameDontChanged.label} name={fullNameDontChanged.name} />
