@@ -8,14 +8,18 @@ import s from './select-field.module.scss';
 const SelectField = ({ label, dataList, ...props }) => {
   SelectField.propTypes = {
     label: PropTypes.string,
-    dataList: Array,
+    dataList: PropTypes.arrayOf(PropTypes.object),
   };
-  const [field, meta] = useField(props);
-  const { value: selectedValue } = field;
+
+  const [field, meta, helper] = useField(props);
   const { touched, error } = meta;
+  const { setValue } = helper;
+  console.log("error", error);
   const isError = touched && error && true;
 
   const renderHelperText = () => {
+
+    console.log("touched", touched);
     if (touched && error) {
       return error;
     }
@@ -29,7 +33,7 @@ const SelectField = ({ label, dataList, ...props }) => {
     },
   };
 
-  const { Option, ValueContainer, DropdownIndicator  } = components;
+  const { Option, ValueContainer, DropdownIndicator } = components;
 
   const optionTemplate = (propsOption) => {
     const {
@@ -57,7 +61,6 @@ const SelectField = ({ label, dataList, ...props }) => {
   };
 
   const defaultOptionTemplate = (propsDefaultOption) => {
-    console.log("propsDefaultOption", propsDefaultOption);
     const { children, ...propsOptionRest } = propsDefaultOption;
     const { label: labelOption, value, icon } = children[0].props.data;
     const isDefaultValue = !value;
@@ -81,14 +84,11 @@ const SelectField = ({ label, dataList, ...props }) => {
     );
   };
 
-  const dropdownIndicatorTemplate = (propsDropdownIndicator) => {
-    console.log("propsDropdownIndicator", propsDropdownIndicator);
-    return (
-      <DropdownIndicator {...propsDropdownIndicator}>
-        <img src="/static/images/arrow-dropdown.svg" alt="" />
-      </DropdownIndicator>
-    );
-  }
+  const dropdownIndicatorTemplate = (propsDropdownIndicator) => (
+    <DropdownIndicator {...propsDropdownIndicator}>
+      <img src="/static/images/arrow-dropdown.svg" alt="" />
+    </DropdownIndicator>
+  );
 
   const customStyles = {
     valueContainer: () => ({
@@ -136,6 +136,7 @@ const SelectField = ({ label, dataList, ...props }) => {
     <div className={cn(styles.selectField)}>
       <Select
         className={s.select}
+        name={field.name}
         components={{
           Option: optionTemplate,
           ValueContainer: defaultOptionTemplate,
@@ -144,7 +145,11 @@ const SelectField = ({ label, dataList, ...props }) => {
         options={dataList}
         defaultValue={dataList[0]}
         styles={customStyles}
+        onChange={(option) => setValue(option.value)}
       />
+      <div className={s['error-text']}>
+        { renderHelperText() }
+      </div>
     </div>
 
   );

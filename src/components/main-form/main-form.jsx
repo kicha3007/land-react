@@ -63,6 +63,7 @@ const formClasses = {
   column: s['inner-column'],
   column_pos_1: s['inner-column_pos_1'],
   column_pos_2: s['inner-column_pos_2'],
+  'input-wrap': s['input-wrap'],
 };
 
 const renderStepContent = (step) => {
@@ -88,10 +89,10 @@ const MainForm = () => {
   const isLastStep = activeStep === steps.length - 1;
 
   const submitForm = (values, actions) => {
-    // alert(JSON.stringify(values, null , 2));
-    // actions.setSubmiting(false);
+    alert(JSON.stringify(values, null, 2));
+    actions.setSubmiting(false);
 
-    // setActiveStep(activeStep + 1);
+    setActiveStep(activeStep + 1);
   };
 
   const handleBack = () => {

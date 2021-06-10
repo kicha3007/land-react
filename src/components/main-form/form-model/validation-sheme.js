@@ -24,7 +24,8 @@ const {
 const validationSchema = [
   Yup.object().shape({
     [fullName.name]: Yup.string().required(`${fullName.requiredErrorMsg}`),
-    [fullNameDontChanged.name]: Yup.boolean().required(`${fullNameDontChanged.requiredErrorMsg}`),
+    [fullNameDontChanged.name]: Yup.boolean().oneOf([true], `${fullNameDontChanged.requiredErrorMsg}`),
+    [cashBack.name]: Yup.string().nullable().required(`${cashBack.requiredErrorMsg}`),
   }),
 ];
 

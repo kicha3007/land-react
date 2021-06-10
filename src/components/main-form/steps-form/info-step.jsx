@@ -56,37 +56,37 @@ const InfoStep = (props) => {
     },
     formClasses,
   } = props;
-  console.log("formClasses", formClasses);
-  console.log("fullName", fullName);
 
   return (
     <>
-      <div className={formClasses.row}>
-        <div className={cn(formClasses.column)}>
-          <SelectField dataList={cashBackList} />
+      <div className={formClasses['input-wrap']}>
+        <div className={formClasses.row}>
+          <div className={cn(formClasses.column)}>
+            <SelectField dataList={cashBackList} name={cashBack.name} label={cashBack.label} />
+          </div>
         </div>
-      </div>
-      <div className={formClasses.row}>
-        <div className={cn(formClasses.column, formClasses.column_pos_1)}>
-          <InputField label={fullName.label} name={fullName.name} />
+        <div className={formClasses.row}>
+          <div className={cn(formClasses.column, formClasses.column_pos_1)}>
+            <InputField label={fullName.label} name={fullName.name} />
+          </div>
+          <div className={cn(formClasses.column, formClasses.column_pos_2)}>
+            <CheckboxField label={fullNameDontChanged.label} name={fullNameDontChanged.name} />
+          </div>
         </div>
-        <div className={cn(formClasses.column, formClasses.column_pos_2)}>
-          <CheckboxField label={fullNameDontChanged.label} name={fullNameDontChanged.name} />
+        <div className={formClasses.row}>
+          <div className={cn(formClasses.column, formClasses.column_pos_1)}>
+            <InputField label={phone.label} name={phone.name} />
+          </div>
+          <div className={cn(formClasses.column, formClasses.column_pos_2)}>
+            <InputField label={smsCode.label} name={smsCode.name} />
+          </div>
         </div>
-      </div>
-      <div className={formClasses.row}>
-        <div className={cn(formClasses.column, formClasses.column_pos_1)}>
-          <InputField label={phone.label} name={phone.name} />
-        </div>
-        <div className={cn(formClasses.column, formClasses.column_pos_2)}>
-          <InputField label={smsCode.label} name={smsCode.name} />
-        </div>
-      </div>
-      <div className={formClasses.row}>
-        <div className={cn(formClasses.column, formClasses.column_pos_1)}>
-          <InputField label={email.label} name={email.name} />
-        </div>
-        <div className={cn(formClasses.column, formClasses.column_pos_2)}>
+        <div className={formClasses.row}>
+          <div className={cn(formClasses.column, formClasses.column_pos_1)}>
+            <InputField label={email.label} name={email.name} />
+          </div>
+          <div className={cn(formClasses.column, formClasses.column_pos_2)}>
+          </div>
         </div>
       </div>
     </>

@@ -12,11 +12,20 @@ const CheckboxField = ({ label, ...props }) => {
   };
 
   const [field, meta, helper] = useField(props);
+  const { touched, error } = meta;
   const { setValue } = helper;
 
   const onChangeHandler = (evt) => {
-    console.log('evt', evt);
     setValue(evt.target.checked);
+  };
+
+  const renderHelperText = () => {
+    console.log("touched", touched);
+    console.log("error", error);
+    if (touched && error) {
+      return error;
+    }
+    return null;
   };
 
   return (
@@ -35,6 +44,9 @@ const CheckboxField = ({ label, ...props }) => {
           <div className={s.text}>
             { label }
           </div>
+        </div>
+        <div className={s['error-text']}>
+          { renderHelperText() }
         </div>
       </label>
     </div>

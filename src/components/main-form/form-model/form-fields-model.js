@@ -4,7 +4,7 @@ const formFieldsModel = {
     cashBack: {
       name: 'cashBack',
       label: 'Выберите опцию кэшбэка',
-      requiredErrorMsg: '',
+      requiredErrorMsg: 'Введите опцию кэшбека',
     },
     fullName: {
       name: 'fullName',
