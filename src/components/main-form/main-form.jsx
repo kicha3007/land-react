@@ -16,6 +16,8 @@ import { validationSchema } from './form-model/validation-sheme';
 
 const { formId, formFields } = formFieldsModel;
 
+import { smsAeroService } from '../../services/sms-aero-service';
+
 const steps = [
   {
     text: 'Заполните информацию',
